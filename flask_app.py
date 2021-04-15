@@ -12,10 +12,8 @@ import json
 # так как мы обращаемся к переменной из запущенного модуля.
 # если бы такое обращение, например,
 # произошло внутри модуля logging, то мы бы получили 'logging'
-from flask_ngrok import run_with_ngrok
-
 app = Flask(__name__)
-run_with_ngrok(app)
+
 # Устанавливаем уровень логирования
 logging.basicConfig(level=logging.INFO)
 
@@ -37,7 +35,7 @@ sessionStorage = {}
 # Внутри функции доступен request.json - это JSON,
 # который отправила нам Алиса в запросе POST
 def main():
-    logging.info(f'Request: {request.json!r}')
+    logging.info('Request: %r', request.json)
 
     # Начинаем формировать ответ, согласно документации
     # мы собираем словарь, который потом при помощи
